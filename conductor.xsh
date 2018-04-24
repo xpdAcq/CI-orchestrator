@@ -40,7 +40,7 @@ for i in installer_order:
     if i in installers:
         x = [installers[i]] + installs[i]
         print(x)
-        # @([installers[i]] + installs[i])
+        @([installers[i]] + installs[i])
     else:
         raise KeyError('That installer is not currently in the installation '
                        'registry. Please add it by updating the $INSTALLERS'
