@@ -21,7 +21,7 @@ install:
 script:
   - set -e
   # Install dependencies
-  - xonsh conductor
+  - xonsh conductor.xsh
 
 notifications:
   email: false
