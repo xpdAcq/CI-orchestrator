@@ -8,12 +8,19 @@ installer_order = ${...}.get('INSTALLERS_ORDER', ['conda', 'pip'])
 # Read the precedence configuration (usually from CI)
 precedence = ${...}.get('PRECEDENCE', ['default'])
 # Bash hack, bash doesn't support array values, so we split strings
+# TODO: replace with xonsh environ registry
 if isinstance(precedence, str):
     precedence = precedence.split()
 
 
 def run(config):
+    """Run the install
 
+    Parameters
+    ----------
+    config: dict
+        The dictionary of packages to install
+    """
     deps = {}
     # Go through the keys in precedence order
     for p in precedence:
@@ -21,8 +28,6 @@ def run(config):
             vg = v.get(p)
             if vg:
                 deps[k] = vg
-    print(deps)
-
     installs = {}
     for k, v in deps.items():
         installer = list(v.keys())[0]
@@ -31,13 +36,10 @@ def run(config):
         else:
             installs[installer] = [v[installer]]
 
-    print(installs)
-
     # execute the installs for each
     for i in installer_order:
         if i in installers:
             x = (installers[i] + ' ' + ' '.join(installs[i])).split()
-            print(x)
             @(x)
         else:
             raise KeyError('That installer is not currently in the '

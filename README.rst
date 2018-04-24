@@ -20,18 +20,25 @@ applied.
 Spec
 ~~~~
 The file is a yaml file which has the structure of:
-```yaml
-name: 
-  default: {installer: name}
-  bleeding: {bleeding instaler: name}
-```
+
+.. code-block:: yaml
+   name:
+     default: {installer: name}
+     bleeding: {bleeding instaler: name}
 
 eg.
-```yaml
-xpdconf:
-  default: {conda: xpdconf}
-  bleeding: {pip: git+git://github.com/xpdAcq/xpdConf.git#egg=xpdconf}
-```
+
+.. code-block:: yaml
+   xpdconf:
+     default: {conda: xpdconf}
+     experimental: {pip: git+git://github.com/xpdAcq/xpdConf.git#egg=xpdconf}
 
 Env vars can be set to modify the level of the install.
 If the env var is not set then the installer defaults to the the default.
+
+Env Vars:
+
+.. code-block:: shell
+   $INSTALLERS
+   $INSTALLERS_ORDER
+   $PRECEDENCE
