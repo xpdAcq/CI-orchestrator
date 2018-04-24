@@ -15,13 +15,14 @@ install:
   - conda config --add channels conda-forge
   - conda update conda
   - conda install pip
-  - conda install xonsh pyyaml
+  - conda install xonsh pyyaml lazyasd
   - pip install xonda
 
 script:
   - set -e
+  - python setup.py install
   # Install dependencies
-  - xonsh conductor.xsh
+  - orch score.yaml
 
 notifications:
   email: false

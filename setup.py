@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+import os
+import sys
+
+try:
+    from setuptools import setup
+    HAVE_SETUPTOOLS = True
+except ImportError:
+    from distutils.core import setup
+    HAVE_SETUPTOOLS = False
+
+
+def main():
+    """The main entry point."""
+    if sys.version_info[:2] < (3, 4):
+        sys.exit('xonsh currently requires Python 3.4+')
+    with open(os.path.join(os.path.dirname(__file__), 'README.rst'), 'r') as f:
+        readme = f.read()
+    scripts = ['scripts/rever']
+    skw = dict(
+        name='orch',
+        description='Release Versions of Software',
+        long_description=readme,
+        license='BSD',
+        version='0.0.0',
+        author='Christopher J. Wright',
+        maintainer='Christopher J. Wright',
+        author_email='cjwright4242@gmail.com',
+        url='https://github.com/xpdAcq/CI-orchestrator',
+        platforms='Cross Platform',
+        classifiers=['Programming Language :: Python :: 3'],
+        packages=['rever', 'rever.activities'],
+        package_dir={'orch': 'orch'},
+        package_data={'orch': ['*.xsh']},
+        scripts=scripts,
+        zip_safe=False,
+        )
+    # WARNING!!! Do not use setuptools 'console_scripts'
+    # It validates the depenendcies (of which we have none) everytime the
+    # 'rever' command is run. This validation adds ~0.2 sec. to the startup
+    # time of xonsh - for every single xonsh run.  This prevents us from
+    # reaching the goal of a startup time of < 0.1 sec.  So never ever write
+    # the following:
+    #
+    #     'console_scripts': ['rever = rever.main:main'],
+    #
+    # END WARNING
+    setup(**skw)
+
+
+if __name__ == '__main__':
+    main()
