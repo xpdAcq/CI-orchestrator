@@ -1,27 +1,43 @@
 import yaml
 
-installers = {'conda': conda install, 'pip': pip install}
+# Registry of installers
+installers = ${...}.get('INSTALLERS',
+                        {'conda': 'conda install', 'pip': 'pip install'})
 
+# Read the actual configuration
 with open('score.yaml', 'r') as f:
-    d = yaml.load(f)
+    config = yaml.load(f)
 
-keys = set([v.keys() for k, v in d])
-precidence = ${...}.get('PRECIDENCE', ['default'])
+$PRECEDENCE = 'default bleeding'
+precidence = ${...}.get('PRECEDENCE', ['default'])
+# Bash hack, bash doesn't support array values, so we split strings
+if isinstance(precidence, str):
+    precidence = precidence.split()
 
-# Find the packages to install from sources
+
 deps = {}
-for k in precidence:
-    for p, pv in d.items():
-        if k in pv:
-            deps[p] = pv[k]
+# Go through the keys in precidence order
+for p in precidence:
+    for k, v in config.items():
+        vg = v.get(p)
+        if vg:
+            deps[k] = vg
+print(deps)
 
-req_installers = {list(v.keys())[0] for k, v in deps.items()}
-installs = {i: [] for i in req_installers}
-for k in deps:
-    for i in req_installers:
-        if list(deps[k].keys())[0] == i:
-            installs[i].append(deps[k][i])
+installs = {}
+for k, v in deps.items():
+    installer = list(v.keys())[0]
+    if installer in installs:
+        installs[installer].append(v[installer])
+    else:
+        installs[installer] = [v[installer]]
 
-for installer in installers:
-    installers[installer] installs[installer]
-
+print(installs)
+# execute the installs for each
+for i in installs:
+    if i in installers:
+        @([installers[i]] + installs[i])
+    else:
+        raise KeyError('That installer is not currently in the installation '
+                       'registry. Please add it by updating the $INSTALLERS'
+                       'env var.')

@@ -1,0 +1,11 @@
+yaml:
+  default:
+    conda: pyyaml
+  bleeding:
+    pip: 'git+https://github.com/yaml/pyyaml'
+xonsh:
+  default:
+    conda: xonsh
+xonda:
+  default:
+    pip: xonda
