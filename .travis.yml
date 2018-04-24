@@ -16,7 +16,7 @@ install:
   - conda config --add channels conda-forge
   - conda update conda
   - conda install pip
-  - conda install xonsh
+  - conda install xonsh pyyaml
 
 script:
   - set -e
