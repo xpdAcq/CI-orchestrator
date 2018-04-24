@@ -2,10 +2,9 @@ sudo: False
 
 language: python
 
-matrix:
-  env:
-    - PRECEDENCE='default'
-    - PRECEDENCE='default bleeding'
+env:
+  - PRECEDENCE='default'
+  - PRECEDENCE='default bleeding'
 
 install:
   # Install conda
