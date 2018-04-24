@@ -3,6 +3,8 @@ import yaml
 # Registry of installers
 installers = ${...}.get('INSTALLERS',
                         {'conda': 'conda install', 'pip': 'pip install'})
+installer_order = ${...}.get('INSTALLERS_ORDER',
+                        ['conda', 'pip'])
 
 # Read the actual configuration
 with open('score.yaml', 'r') as f:
@@ -34,9 +36,11 @@ for k, v in deps.items():
 
 print(installs)
 # execute the installs for each
-for i in installs:
+for i in installer_order:
     if i in installers:
-        @([installers[i]] + installs[i])
+        x = [installers[i]] + installs[i]
+        print(x)
+        # @([installers[i]] + installs[i])
     else:
         raise KeyError('That installer is not currently in the installation '
                        'registry. Please add it by updating the $INSTALLERS'

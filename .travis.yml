@@ -17,6 +17,7 @@ install:
   - conda update conda
   - conda install pip
   - conda install xonsh pyyaml
+  - pip install xonda
 
 script:
   - set -e

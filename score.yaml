@@ -2,10 +2,13 @@ yaml:
   default:
     conda: pyyaml
   bleeding:
-    pip: 'git+https://github.com/yaml/pyyaml'
+    pip: 'git+https://github.com/yaml/pyyaml.git#egg=yaml'
 xonsh:
   default:
     conda: xonsh
 xonda:
   default:
     pip: xonda
+pip:
+  default:
+    conda: pip
