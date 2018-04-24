@@ -19,7 +19,7 @@ def main():
     scripts = ['scripts/orch']
     skw = dict(
         name='orch',
-        description='Release Versions of Software',
+        description='Install orchestrator',
         long_description=readme,
         license='BSD',
         version='0.0.0',
