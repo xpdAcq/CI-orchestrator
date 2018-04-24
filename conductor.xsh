@@ -38,7 +38,7 @@ print(installs)
 # execute the installs for each
 for i in installer_order:
     if i in installers:
-        x = installers[i] + ' ' + ' '.join(installs[i])
+        x = (installers[i] + ' ' + ' '.join(installs[i])).split()
         print(x)
         @(x)
     else:
