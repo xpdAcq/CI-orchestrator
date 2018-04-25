@@ -42,6 +42,6 @@ def run(config):
             x = (installers[i] + ' ' + ' '.join(installs[i])).split()
             @(x)
         else:
-            raise KeyError('That installer is not currently in the '
+            raise KeyError('The {} installer is not currently in the '
                            'installation registry. Please add it by '
-                           'updating the $INSTALLERS env var.')
+                           'updating the $INSTALLERS env var.'.format(i))
