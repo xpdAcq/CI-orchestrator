@@ -1,5 +1,6 @@
 """Main CLI entry point for orch"""
 import argparse
+import os
 
 import yaml
 from lazyasd import lazyobject
@@ -21,7 +22,8 @@ def env_main(args=None):
     started up.
     """
     ns = PARSER.parse_args(args)
-    source @(ns.rc)
+    if os.path.exists(ns.rc):
+        source @(ns.rc)
     with open(ns.score, 'r') as f:
         score = yaml.load(f)
     run(score)
