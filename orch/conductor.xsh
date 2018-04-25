@@ -1,7 +1,6 @@
 # Registry of installers
 installers = ${...}.get('INSTALLERS',
                         {'conda': 'conda install', 'pip': 'pip install'})
-print(installers)
 # Order to run installers (conda installing pip, then pip installing things)
 installer_order = ${...}.get('INSTALLERS_ORDER', ['conda', 'pip'])
 
@@ -44,4 +43,5 @@ def run(config):
         else:
             raise KeyError('The {} installer is not currently in the '
                            'installation registry. Please add it by '
-                           'updating the $INSTALLERS env var.'.format(i))
+                           'updating the $INSTALLERS env var.\n\n '
+                           '{}'.format(i, installers))
