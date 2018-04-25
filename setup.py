@@ -33,7 +33,7 @@ def main():
         package_dir={'orch': 'orch'},
         package_data={'orch': ['*.xsh']},
         scripts=scripts,
-        install_requires=['xonsh', 'lazyasd', 'pyyaml']
+        install_requires=['xonsh', 'lazyasd', 'pyyaml', 'xonda']
         zip_safe=False,
         )
     # WARNING!!! Do not use setuptools 'console_scripts'
