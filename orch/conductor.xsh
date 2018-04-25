@@ -40,7 +40,7 @@ def run(config):
         if i in installers and i in installs:
             x = (installers[i] + ' ' + ' '.join(installs[i])).split()
             @(x)
-        else:
+        elif i not in installers:
             raise KeyError('The {} installer is not currently in the '
                            'installation registry. Please add it by '
                            'updating the $INSTALLERS env var.\n\n '
