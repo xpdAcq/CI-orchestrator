@@ -15,7 +15,7 @@ install:
   - conda config --add channels conda-forge
   - conda update conda
   - conda install pip
-  - conda install xonsh pyyaml lazyasd rever
+  - conda install xonsh pyyaml lazyasd
   - pip install xonda
 
 script:

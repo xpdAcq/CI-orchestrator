@@ -1,6 +1,15 @@
+from contextlib import contextmanager
 import os
 
-from rever.tools import indir
+
+@contextmanager
+def indir(d):
+    """Context manager for temporarily entering into a directory."""
+    old_d = os.getcwd()
+    ![cd @(d)]
+    yield
+    ![cd @(old_d)]
+
 
 def build_orch(url_stages):
     for url, stage in url_stages:
