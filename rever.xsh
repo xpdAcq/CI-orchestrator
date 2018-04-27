@@ -11,4 +11,4 @@ $CHANGELOG_IGNORE = ['TEMPLATE.rst']
 $PUSH_TAG_REMOTE = 'git@github.com:xpdAcq/CI-orchestrator.git'
 
 $GITHUB_ORG = 'xpdAcq'
-$GITHUB_REPO = 'CI-orchestrator'
+$GITHUB_REPO = 'orch'

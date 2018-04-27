@@ -1,8 +1,17 @@
+from rever.tools import indir
+
+def build_orch(url_stages):
+    for url, stage in url_stages:
+        git clone url
+        with indir(url_stages.split('/')[-1]):
+            orch '/requirements/{}.yaml'.format(stage)
+
 # Registry of installers
 installers = ${...}.get('INSTALLERS',
-                        {'conda': 'conda install', 'pip': 'pip install'})
+                        {'conda': 'conda install', 'pip': 'pip install',
+                         'orch': build_orch})
 # Order to run installers (conda installing pip, then pip installing things)
-installer_order = ${...}.get('INSTALLERS_ORDER', ['conda', 'pip'])
+installer_order = ${...}.get('INSTALLERS_ORDER', ['orch', 'conda', 'pip'])
 
 # Read the precedence configuration (usually from CI)
 precedence = ${...}.get('PRECEDENCE', ['default'])
@@ -10,6 +19,19 @@ precedence = ${...}.get('PRECEDENCE', ['default'])
 # TODO: replace with xonsh environ registry
 if isinstance(precedence, str):
     precedence = precedence.split()
+
+
+def top_run(config):
+    # run build installs
+    run(config['requirements']['build'])
+
+    # do the source install
+    @(config['build']['script'])
+
+    # run the run installs
+    run(config['requirements']['run'])
+
+
 
 
 def run(config):
@@ -20,6 +42,7 @@ def run(config):
     config: dict
         The dictionary of packages to install
     """
+
     deps = {}
     # Go through the keys in precedence order
     for p in precedence:
@@ -27,6 +50,7 @@ def run(config):
             vg = v.get(p)
             if vg:
                 deps[k] = vg
+
     installs = {}
     for k, v in deps.items():
         installer = list(v.keys())[0]
@@ -38,8 +62,11 @@ def run(config):
     # execute the installs for each
     for i in installer_order:
         if i in installers and i in installs:
-            x = (installers[i] + ' ' + ' '.join(installs[i])).split()
-            @(x)
+            if isinstance(installers[i], str)
+                x = (installers[i] + ' ' + ' '.join(installs[i])).split()
+                @(x)
+            else:
+                installers[i](installer[i])
         elif i not in installers:
             raise KeyError('The {} installer is not currently in the '
                            'installation registry. Please add it by '
