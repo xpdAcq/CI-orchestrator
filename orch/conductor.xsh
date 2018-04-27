@@ -23,7 +23,7 @@ if isinstance(precedence, str):
     precedence = precedence.split()
 
 
-def top_run(config):
+def run(config):
     # run build installs
     run(config['requirements']['build'])
 
@@ -36,7 +36,7 @@ def top_run(config):
 
 
 
-def run(config):
+def sub_run(config):
     """Run the install
 
     Parameters
