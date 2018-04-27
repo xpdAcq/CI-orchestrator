@@ -62,7 +62,7 @@ def run(config):
     # execute the installs for each
     for i in installer_order:
         if i in installers and i in installs:
-            if isinstance(installers[i], str)
+            if isinstance(installers[i], str):
                 x = (installers[i] + ' ' + ' '.join(installs[i])).split()
                 @(x)
             else:
