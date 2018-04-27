@@ -2,7 +2,7 @@ from rever.tools import indir
 
 def build_orch(url_stages):
     for url, stage in url_stages:
-        git clone @(url)
+        $(git clone @(url))
         with indir(url_stages.split('/')[-1]):
             orch 'requirements/{}.yaml'.format(stage)
 
@@ -66,7 +66,7 @@ def run(config):
                 x = (installers[i] + ' ' + ' '.join(installs[i])).split()
                 @(x)
             else:
-                installers[i](installer[i])
+                installers[i](installs[i])
         elif i not in installers:
             raise KeyError('The {} installer is not currently in the '
                            'installation registry. Please add it by '
