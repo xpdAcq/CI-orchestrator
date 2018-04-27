@@ -22,7 +22,7 @@ def main():
         description='Install orchestrator',
         long_description=readme,
         license='BSD',
-        version='0.1.3',
+        version='0.1.4',
         author='Christopher J. Wright',
         maintainer='Christopher J. Wright',
         author_email='cjwright4242@gmail.com',
