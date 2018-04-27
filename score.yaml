@@ -24,3 +24,6 @@ requirements:
     pip:
       default:
         conda: pip
+    rever:
+      default:
+        conda: rever

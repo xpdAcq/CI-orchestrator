@@ -2,9 +2,9 @@ from rever.tools import indir
 
 def build_orch(url_stages):
     for url, stage in url_stages:
-        git clone url
+        git clone @(url)
         with indir(url_stages.split('/')[-1]):
-            orch '/requirements/{}.yaml'.format(stage)
+            orch 'requirements/{}.yaml'.format(stage)
 
 # Registry of installers
 installers = ${...}.get('INSTALLERS',
