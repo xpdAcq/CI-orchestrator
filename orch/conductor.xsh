@@ -1,9 +1,11 @@
+import os
+
 from rever.tools import indir
 
 def build_orch(url_stages):
     for url, stage in url_stages:
         git clone @(url)
-        with indir(url_stages.split('/')[-1]):
+        with indir(os.path.splitext(url_stages.split('/')[-1])[0]):
             orch @('requirements/{}.yaml'.format(stage))
 
 # Registry of installers

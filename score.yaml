@@ -27,3 +27,6 @@ requirements:
     rever:
       default:
         conda: rever
+    orch-test:
+      default:
+        orch: git@github.com:CJ-Wright/orch-test.git
