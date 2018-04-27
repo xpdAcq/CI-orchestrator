@@ -34,13 +34,13 @@ if isinstance(precedence, str):
 
 def run(config):
     # run build installs
-    run(config['requirements']['build'])
+    sub_run(config['requirements']['build'])
 
     # do the source install
     @(config['build']['script'])
 
     # run the run installs
-    run(config['requirements']['run'])
+    sub_run(config['requirements']['run'])
 
 
 
