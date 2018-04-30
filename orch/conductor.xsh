@@ -37,6 +37,8 @@ def run(config):
     sub_run(config['requirements']['build'])
 
     print(![which python])
+    print(![pwd])
+    print(![ls])
     # do the source install
     @(config['build']['script'])
 
