@@ -1,5 +1,6 @@
 from contextlib import contextmanager
 import os
+import shlex
 
 
 @contextmanager
@@ -36,11 +37,8 @@ def run(config):
     # run build installs
     sub_run(config['requirements']['build'])
 
-    print(![which python])
-    print(![pwd])
-    print(![ls])
     # do the source install
-    @(config['build']['script'])
+    @(shlex.split(config['build']['script']))
 
     # run the run installs
     sub_run(config['requirements']['run'])
