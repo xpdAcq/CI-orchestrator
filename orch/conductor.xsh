@@ -12,11 +12,11 @@ def indir(d):
     ![cd @(old_d)]
 
 
-def build_orch(url_stages):
-    for url, stage in url_stages:
+def build_orch(urls):
+    for url in urls:
         git clone @(url)
-        with indir(os.path.splitext(url_stages.split('/')[-1])[0]):
-            orch @('requirements/{}.yaml'.format(stage))
+        with indir(os.path.splitext(urls.split('/')[-1])[0]):
+            orch @('score.yaml')
 
 # Registry of installers
 installers = ${...}.get('INSTALLERS',
