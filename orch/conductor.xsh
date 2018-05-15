@@ -34,19 +34,11 @@ if isinstance(precedence, str):
 
 
 def run(config):
-    # run build installs
-    sub_run(config['requirements']['build'])
-
-    # do the source install
-    @(shlex.split(config['build']['script']))
-
-    # run the run installs
-    sub_run(config['requirements']['run'])
+    for section in config.get('section_order', ['build', 'install', 'run']):
+        sub_run(config[section], section)
 
 
-
-
-def sub_run(config):
+def sub_run(config, name):
     """Run the install
 
     Parameters
@@ -54,7 +46,9 @@ def sub_run(config):
     config: dict
         The dictionary of packages to install
     """
-
+    if name == 'install':
+        @(shlex.split(config['build']['script']))
+        return
     deps = {}
     # Go through the keys in precedence order
     for p in precedence:
