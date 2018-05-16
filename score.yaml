@@ -1,32 +1,33 @@
+section_order:
+  - build
+  - install
+  - run
+install: python setup.py install
 build:
-  script: python setup.py install
-
-requirements:
-  build:
-    pip:
-      default:
-        conda: pip
-    python:
-      default:
-        conda: python
-  run:
-    yaml:
-      default:
-        conda: pyyaml
-      bleeding:
-        pip: 'git+https://github.com/yaml/pyyaml.git#egg=yaml'
-    xonsh:
-      default:
-        conda: xonsh
-    xonda:
-      default:
-        pip: xonda
-    pip:
-      default:
-        conda: pip
-    rever:
-      default:
-        conda: rever
-    orch-test:
-      default:
-        orch: https://github.com/CJ-Wright/orch-test.git
+  pip:
+    default:
+      conda: pip
+  python:
+    default:
+      conda: python
+run:
+  yaml:
+    default:
+      conda: pyyaml
+    bleeding:
+      pip: 'git+https://github.com/yaml/pyyaml.git#egg=yaml'
+  xonsh:
+    default:
+      conda: xonsh
+  xonda:
+    default:
+      pip: xonda
+  pip:
+    default:
+      conda: pip
+  rever:
+    default:
+      conda: rever
+  orch-test:
+    default:
+      orch: https://github.com/CJ-Wright/orch-test.git
