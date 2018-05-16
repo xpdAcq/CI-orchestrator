@@ -4,6 +4,27 @@ orch Change Log
 
 .. current developments
 
+v0.2.0
+====================
+
+**Added:**
+
+* ``section_order`` key to decide when sections are run
+
+
+**Changed:**
+
+* The sections are a little different, now there is an install seciton with
+  the install script
+
+
+**Fixed:**
+
+* Actually get system to run!
+
+
+
+
 v0.1.4
 ====================
 
