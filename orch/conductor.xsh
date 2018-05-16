@@ -53,6 +53,7 @@ def sub_run(config, name):
     # Go through the keys in precedence order
     for p in precedence:
         for k, v in config.items():
+            print(v)
             vg = v.get(p)
             if vg:
                 deps[k] = vg
