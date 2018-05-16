@@ -47,7 +47,7 @@ def sub_run(config, name):
         The dictionary of packages to install
     """
     if name == 'install':
-        @(shlex.split(config['build']['script']))
+        @(shlex.split(config['install']))
         return
     deps = {}
     # Go through the keys in precedence order
