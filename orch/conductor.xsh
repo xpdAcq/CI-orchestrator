@@ -35,10 +35,11 @@ if isinstance(precedence, str):
 
 def run(config):
     for section in config.get('section_order', ['build', 'install', 'run']):
-        sub_run(config[section], section)
+        print('Operating on section: {}'.format(section))
+        sub_run(config[section])
 
 
-def sub_run(config, name):
+def sub_run(config):
     """Run the install
 
     Parameters
@@ -46,7 +47,8 @@ def sub_run(config, name):
     config: dict
         The dictionary of packages to install
     """
-    if name == 'install':
+    if isinstance(config, str):
+        print('Running {}'.format(config))
         @(shlex.split(config))
         return
     deps = {}
@@ -70,8 +72,10 @@ def sub_run(config, name):
         if i in installers and i in installs:
             if isinstance(installers[i], str):
                 x = (installers[i] + ' ' + ' '.join(installs[i])).split()
+                print('Running {}'.format(x))
                 @(x)
             else:
+                print('Running {}'.format(installers[i]))
                 installers[i](installs[i])
         elif i not in installers:
             raise KeyError('The {} installer is not currently in the '
