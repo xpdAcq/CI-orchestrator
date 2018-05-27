@@ -15,7 +15,7 @@ def indir(d):
 def build_orch(urls):
     for url in urls:
         git clone @(url)
-        with indir(os.path.splitext(url.split('/')[-1])[0]:
+        with indir(os.path.splitext(url.split('/')[-1])[0]):
             orch @('score.yaml')
 
 # Registry of installers
