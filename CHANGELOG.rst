@@ -4,6 +4,16 @@ orch Change Log
 
 .. current developments
 
+v0.2.2
+====================
+
+**Fixed:**
+
+* Move orch to last in installer order
+
+
+
+
 v0.2.1
 ====================
 
