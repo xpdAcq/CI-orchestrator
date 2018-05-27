@@ -15,7 +15,7 @@ def indir(d):
 def build_orch(urls):
     for url in urls:
         git clone @(url)
-        with indir(os.path.splitext(url.split('/')[-1])[0]):
+        with indir(os.path.splitext(url.split('/')[-1])[0]:
             orch @('score.yaml')
 
 # Registry of installers
@@ -23,7 +23,7 @@ installers = ${...}.get('INSTALLERS',
                         {'conda': 'conda install', 'pip': 'pip install',
                          'orch': build_orch})
 # Order to run installers (conda installing pip, then pip installing things)
-installer_order = ${...}.get('INSTALLERS_ORDER', ['orch', 'conda', 'pip'])
+installer_order = ${...}.get('INSTALLERS_ORDER', ['conda', 'pip', 'orch'])
 
 # Read the precedence configuration (usually from CI)
 precedence = ${...}.get('PRECEDENCE', ['default'])
