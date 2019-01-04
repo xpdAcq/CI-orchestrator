@@ -18,9 +18,19 @@ def build_orch(urls):
         with indir(os.path.splitext(url.split('/')[-1])[0]):
             orch @('score.yaml')
 
+url_base = 'http://35.232.222.82/'
+
+def construct_url(*packages, channel='conda-forge'):
+    ub = url_base + channel + '/'
+    ub += ','.join(packages)
+    return construct_url
+
+def meta_conda(packages):
+    @('conda install' + ' ' + ' '.join(packages) + '-c ' + construct_url(*packages)).split())
+
 # Registry of installers
 installers = ${...}.get('INSTALLERS',
-                        {'conda': 'conda install', 'pip': 'pip install',
+                        {'conda': meta_conda, 'pip': 'pip install',
                          'orch': build_orch})
 # Order to run installers (conda installing pip, then pip installing things)
 installer_order = ${...}.get('INSTALLERS_ORDER', ['conda', 'pip', 'orch'])
