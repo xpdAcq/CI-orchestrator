@@ -26,7 +26,7 @@ def construct_url(*packages, channel='conda-forge'):
 
 
 def meta_conda(packages):
-    @(('conda install' + ' ' + ' '.join(packages) + ' -c ' + construct_url(*packages)).split())
+    @(('conda install' + ' -c ' + construct_url(*packages) + ' ' + ' '.join(packages)).split())
 
 # Registry of installers
 installers = ${...}.get('INSTALLERS',
