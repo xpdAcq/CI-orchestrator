@@ -4,6 +4,16 @@ orch Change Log
 
 .. current developments
 
+v0.3.0
+====================
+
+**Changed:**
+
+* ``conda`` installer now uses conda-metachannel, speeding up installs
+
+
+
+
 v0.2.3
 ====================
 
