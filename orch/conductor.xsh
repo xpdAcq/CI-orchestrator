@@ -20,13 +20,13 @@ def build_orch(urls):
 
 url_base = 'http://35.232.222.82/'
 
+
 def construct_url(*packages, channel='conda-forge'):
-    ub = url_base + channel + '/'
-    ub += ','.join(packages)
-    return construct_url
+    return url_base + channel + '/' + ','.join(packages)
+
 
 def meta_conda(packages):
-    @(('conda install' + ' ' + ' '.join(packages) + '-c ' + construct_url(*packages)).split())
+    @(('conda install' + ' ' + ' '.join(packages) + ' -c ' + construct_url(*packages)).split())
 
 # Registry of installers
 installers = ${...}.get('INSTALLERS',
