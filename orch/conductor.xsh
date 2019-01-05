@@ -22,6 +22,8 @@ url_base = 'http://35.232.222.82/'
 
 
 def construct_url(*packages, channel='conda-forge'):
+    # remove version constraints
+    stripped_packages = [p.split('=')[0].split('>')[0].split('<')[0] for p in packages]
     return url_base + channel + '/' + ','.join(packages)
 
 
