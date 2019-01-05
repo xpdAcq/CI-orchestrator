@@ -4,6 +4,16 @@ orch Change Log
 
 .. current developments
 
+v0.3.2
+====================
+
+**Fixed:**
+
+* Handle version constraints for meta-conda properly
+
+
+
+
 v0.3.1
 ====================
 
