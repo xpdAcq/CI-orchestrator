@@ -4,6 +4,11 @@ orch Change Log
 
 .. current developments
 
+v0.3.1
+====================
+
+
+
 v0.3.0
 ====================
 
