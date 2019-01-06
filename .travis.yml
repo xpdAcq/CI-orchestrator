@@ -6,6 +6,10 @@ env:
   - PRECEDENCE='default'
   - PRECEDENCE='default bleeding'
 
+python:
+    - 3.6
+    - 3.7
+
 install:
   # Install conda
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
