@@ -4,6 +4,16 @@ orch Change Log
 
 .. current developments
 
+v0.3.3
+====================
+
+**Changed:**
+
+* Orch now support env vars in dep specs
+
+
+
+
 v0.3.2
 ====================
 
