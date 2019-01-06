@@ -1,6 +1,7 @@
 from contextlib import contextmanager
 import os
 import shlex
+from xonsh.tools import expand_path
 
 
 @contextmanager
@@ -28,7 +29,7 @@ def construct_url(*packages, channel='conda-forge'):
 
 
 def meta_conda(packages):
-    @(('conda install' + ' -c ' + construct_url(*packages) + ' ' + ' '.join(packages)).split())
+    @((expand_path('conda install' + ' -c ' + construct_url(*packages) + ' ' + ' '.join(packages))).split())
 
 # Registry of installers
 installers = ${...}.get('INSTALLERS',
@@ -83,7 +84,7 @@ def sub_run(config):
     for i in installer_order:
         if i in installers and i in installs:
             if isinstance(installers[i], str):
-                x = (installers[i] + ' ' + ' '.join(installs[i])).split()
+                x = expand_path((installers[i] + ' ' + ' '.join(installs[i]))).split()
                 print('Running {}'.format(x))
                 @(x)
             else:
