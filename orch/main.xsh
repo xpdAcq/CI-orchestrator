@@ -24,6 +24,7 @@ def env_main(args=None):
     ns = PARSER.parse_args(args)
     if os.path.exists(ns.rc):
         source @(ns.rc)
+    print($INSTALLERS)
     with open(ns.score, 'r') as f:
         score = yaml.load(f)
     run(score)
