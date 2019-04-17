@@ -36,7 +36,7 @@ installers = ${...}.get('INSTALLERS',
                         {'conda': meta_conda, 'pip': 'pip install',
                          'orch': build_orch, 'cconda': 'conda install'})
 # Order to run installers (conda installing pip, then pip installing things)
-installer_order = ${...}.get('INSTALLERS_ORDER', ['conda', 'pip', 'orch'])
+installer_order = ${...}.get('INSTALLERS_ORDER', ['conda', 'cconda', 'pip', 'orch'])
 
 # Read the precedence configuration (usually from CI)
 precedence = ${...}.get('PRECEDENCE', ['default'])
