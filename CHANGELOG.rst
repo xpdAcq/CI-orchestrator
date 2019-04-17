@@ -4,6 +4,15 @@ orch Change Log
 
 .. current developments
 
+v0.4.0
+====================
+
+**Added:**
+
+* ``cconda`` installer which runs normal ``conda install`` rather than metachannel
+
+
+
 v0.3.3
 ====================
 
