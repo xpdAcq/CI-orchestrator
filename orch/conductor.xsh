@@ -83,6 +83,7 @@ def sub_run(config):
     # execute the installs for each
     for i in installer_order:
         if i in installers and i in installs:
+            print(installers, i)
             if isinstance(installers[i], str):
                 x = expand_path((installers[i] + ' ' + ' '.join(installs[i]))).split()
                 print('Running {}'.format(x))
