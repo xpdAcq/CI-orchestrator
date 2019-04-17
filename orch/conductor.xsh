@@ -31,10 +31,6 @@ def construct_url(*packages, channel='conda-forge'):
 def meta_conda(packages):
     @((expand_path('conda install' + ' -c ' + construct_url(*packages) + ' ' + ' '.join(packages))).split())
 
-# Registry of installers
-installers = ${...}.get('INSTALLERS',
-                        {'conda': meta_conda, 'pip': 'pip install',
-                         'orch': build_orch})
 # Order to run installers (conda installing pip, then pip installing things)
 installer_order = ${...}.get('INSTALLERS_ORDER', ['conda', 'pip', 'orch'])
 
@@ -79,6 +75,10 @@ def sub_run(config):
             installs[installer].append(v[installer])
         else:
             installs[installer] = [v[installer]]
+    # Registry of installers
+    installers = ${...}.get('INSTALLERS',
+                        {'conda': meta_conda, 'pip': 'pip install',
+                         'orch': build_orch})
 
     # execute the installs for each
     for i in installer_order:
