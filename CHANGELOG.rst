@@ -4,6 +4,15 @@ orch Change Log
 
 .. current developments
 
+v0.4.3
+====================
+
+**Changed:**
+
+* swap ``cconda`` and ``conda`` so we use conda by default (which is fast now)
+
+
+
 v0.4.2
 ====================
 
