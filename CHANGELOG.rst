@@ -4,6 +4,15 @@ orch Change Log
 
 .. current developments
 
+v0.4.2
+====================
+
+**Changed:**
+
+* Use correct url for metachannel
+
+
+
 v0.4.1
 ====================
 
