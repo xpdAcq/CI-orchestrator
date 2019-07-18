@@ -19,7 +19,7 @@ def build_orch(urls):
         with indir(os.path.splitext(url.split('/')[-1])[0]):
             orch @('score.yaml')
 
-url_base = 'http://35.232.222.82/'
+url_base = 'https://metachannel.conda-forge.org/'
 
 
 def construct_url(*packages, channel='conda-forge'):
