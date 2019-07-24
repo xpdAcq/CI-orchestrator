@@ -4,6 +4,15 @@ orch Change Log
 
 .. current developments
 
+v0.4.4
+====================
+
+**Fixed:**
+
+* use ``xonsh`` setup system rather than our own thing
+
+
+
 v0.4.3
 ====================
 
